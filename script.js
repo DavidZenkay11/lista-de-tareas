@@ -74,7 +74,7 @@ const addBtn = document.querySelector(".inputField button");
 const todoList = document.querySelector(".todoList");
 const deleteAllBtn = document.querySelector(".footer button");
  
-// onkeyup event
+
 inputBox.onkeyup = ()=>{
   let userEnteredValue = inputBox.value; 
   if(userEnteredValue.trim() != 0){ 
@@ -85,22 +85,23 @@ inputBox.onkeyup = ()=>{
 }
  
 showTasks(); 
+ 
 addBtn.onclick = ()=>{ 
   let userEnteredValue = inputBox.value; 
-  let getLocalStorageData = localStorage.getItem("New Todo");
+  let getLocalStorageData = localStorage.getItem("Agregar nueva tarea"); 
   if(getLocalStorageData == null){ 
     listArray = []; 
   }else{
-    listArray = JSON.parse(getLocalStorageData);  
+    listArray = JSON.parse(getLocalStorageData); 
   }
   listArray.push(userEnteredValue); 
-  localStorage.setItem("New Todo", JSON.stringify(listArray)); 
+  localStorage.setItem("Agregar nueva tarea", JSON.stringify(listArray)); 
   showTasks(); 
   addBtn.classList.remove("active"); 
 }
  
 function showTasks(){
-  let getLocalStorageData = localStorage.getItem("New Todo");
+  let getLocalStorageData = localStorage.getItem("Agregar nueva tarea");
   if(getLocalStorageData == null){
     listArray = [];
   }else{
@@ -118,21 +119,20 @@ function showTasks(){
     newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
   });
   todoList.innerHTML = newLiTag; 
-  inputBox.value = ""; k
+  inputBox.value = ""; 
 }
  
 
 function deleteTask(index){
-  let getLocalStorageData = localStorage.getItem("New Todo");
+  let getLocalStorageData = localStorage.getItem("Agregar nueva tarea");
   listArray = JSON.parse(getLocalStorageData);
-  listArray.splice(index, 1); 
-  localStorage.setItem("New Todo", JSON.stringify(listArray));
+  listArray.splice(index, 1);
+  localStorage.setItem("Agregar nueva tarea", JSON.stringify(listArray));
   showTasks(); 
 }
- 
 
 deleteAllBtn.onclick = ()=>{
   listArray = []; 
-  localStorage.setItem("New Todo", JSON.stringify(listArray));
+  localStorage.setItem("New Todo", JSON.stringify(listArray)); 
   showTasks(); 
 }
