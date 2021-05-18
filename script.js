@@ -133,6 +133,8 @@ function deleteTask(index){
 
 deleteAllBtn.onclick = ()=>{
   listArray = []; 
+
   localStorage.setItem("Agregar nueva tarea", JSON.stringify(listArray)); 
+
   showTasks(); 
 }
