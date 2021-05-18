@@ -116,7 +116,7 @@ function showTasks(){
   }
   let newLiTag = "";
   listArray.forEach((element, index) => {
-    newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
+    newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="faS fa-trash"></i></span></li>`;
   });
   todoList.innerHTML = newLiTag; 
   inputBox.value = ""; 
@@ -133,8 +133,6 @@ function deleteTask(index){
 
 deleteAllBtn.onclick = ()=>{
   listArray = []; 
-
   localStorage.setItem("Agregar nueva tarea", JSON.stringify(listArray)); 
-
   showTasks(); 
 }
